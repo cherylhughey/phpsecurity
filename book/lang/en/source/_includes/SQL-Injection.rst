@@ -16,7 +16,7 @@ Consider the following query:
         'SELECT * FROM transactions WHERE user_id = ' . $_POST['user_id']
     );
 
-The above has a number of things wrong with it. First of all, we haven't validated the contents of the POST data to ensure it is a valid user_id. Secondly, we are allowing an untrusted source to tell us which user_id to use - an attacker could set any valid user_id they wanted to. Perhaps the user_id was contained in a hidden form field that we believed safe because the web form would not let it be edited (forgetting that attackers can submit anything). Thirdly, we have not escaped the user_id or passed it to the query as a bound parameter which also allows the attacker to inject arbitrary strings that can manipulate the SQL query given we failed to validate it in the first place.
+The above has a number of things wrong with it. First of all, we haven't validated the contents of the POST data to ensure it is a valid user_id. Secondly, we are allowing an untrusted source to tell us which user_id to use - an attacker could set any valid user_id they wanted to do so. Perhaps the user_id was contained in a hidden form field that we believed safe because the web form would not let it be edited (forgetting that attackers can submit anything). Thirdly, we have not escaped the user_id or passed it to the query as a bound parameter which also allows the attacker to inject arbitrary strings that can manipulate the SQL query given we failed to validate it in the first place.
 
 The above three failings are remarkably common in web applications.
 
